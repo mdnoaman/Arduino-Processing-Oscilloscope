@@ -14,7 +14,7 @@ byte before the analogread values, i.e. Serial.write( B10100000 ). I am randomly
 
 On the processing side, the singal serial data is read continuously. When the port.read() finds this matching byte, (B10100000 or 160 in dec), 
 the variable "state" changes to 1 which in turn runs the other routine where all the 4 channels values are read and decoded. The rest part of the code
-plots these values along with showing a current value for each channel on top.
+plots these values along with showing a current value for each channel on top. A typical screenshot is taken for the window in the .png file
 
 
 
