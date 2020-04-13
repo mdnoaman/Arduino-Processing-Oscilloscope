@@ -12,14 +12,20 @@ On the processing side, the singal serial data is read continuously. When the po
 the variable "state" changes to 1 which in turn runs the other routine where all the 4 channels values are read and decoded. After all the 4 channel data are received, the "state" changes to 0 to listen to the start trigger from the arduino serial data. This helps maintain the sychronization of the channel information. The rest part of the code plots these values along with showing a current value for each channel on top. A typical screenshot is taken for the window in the .png file.
 
 The additional piece of lines in the arduino file changes the clock prescaler to the ADCs. The default value is 128 which in this example
-is set to 16. This way the sampling rate of the ADCs increased a lot. With this setting enalbled the sampling rate on all 4 channels is above 16KHz. This could be seriusly useful.
+is set to 16. This way the sampling rate of the ADCs increased by a factor of 8. With this setting enalbled the sampling rate on all 4 channels is above 16KHz. This could be seriusly useful. Withouth these added codes, the sampling rate was only 2 KHz.
+
 #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 
 void setup()
+
 {
-  sbi(ADCSRA, ADPS2);
-  cbi(ADCSRA, ADPS1);
-  cbi(ADCSRA, ADPS0);
 
+sbi(ADCSRA, ADPS2);
 
+cbi(ADCSRA, ADPS1);
+
+cbi(ADCSRA, ADPS0);
+
+...
