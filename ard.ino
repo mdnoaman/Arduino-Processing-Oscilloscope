@@ -1,8 +1,14 @@
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 
-void setup() {
+void setup()
+{
+  sbi(ADCSRA, ADPS2);
+  cbi(ADCSRA, ADPS1);
+  cbi(ADCSRA, ADPS0);
   //Setup serial connection
 //  Serial.begin(115200);
-  Serial.begin(1000000);
+  Serial.begin(2000000);
   pinMode(A0,INPUT);
   pinMode(A1,INPUT);
   pinMode(A2,INPUT);
