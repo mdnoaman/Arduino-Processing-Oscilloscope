@@ -13,7 +13,7 @@ void setup()
 {
   size(1350, 530);
   //port = new Serial(this, Serial.list()[1], 115200);
-  port = new Serial(this, Serial.list()[1], 1000000);
+  port = new Serial(this, Serial.list()[1], 2000000);
   frameHeight = height - topbar;
   frameWidth = width - leftbar;
   values0 = new int[frameWidth];
